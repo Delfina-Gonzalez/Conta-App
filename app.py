@@ -319,6 +319,70 @@ operativas, de inversión y de financiación.
                 unsafe_allow_html=True,
             )
 
+    with st.expander("RT 37 - Normas de auditoría"):
+        st.markdown(
+            """
+
+    **RT 37:** es la norma técnica emitida por la FACPCE que regula el ejercicio profesional del contador en materia de auditoría, revisión y otros encargos de aseguramiento.
+
+    Establece principios y procedimientos que debe aplicar el auditor para obtener evidencia suficiente y adecuada y emitir una opinión sobre los estados contables.
+
+    **Aspectos clave:**
+    - Define el proceso de auditoría (planificación, ejecución y conclusión).
+    - Requiere obtener evidencia válida para sustentar la opinión.
+    - Regula la documentación del trabajo (papeles de trabajo).
+    - Establece la responsabilidad del auditor frente al control interno.
+    - Incluye el impacto de la tecnología en los sistemas de información.
+
+    **Relación con tecnología:**
+    - El auditor debe comprender los sistemas informáticos del ente.
+    - Evaluar controles internos vinculados a tecnología de la información.
+    - Considerar riesgos derivados del uso de sistemas digitales.
+    - Permite el uso de herramientas tecnológicas para obtener evidencia.
+
+            """
+        )
+
+    with st.expander("Informe 25 - Nuevas tecnologías en auditoría"):
+        st.markdown(
+            """
+
+    **Informe 25 (FACPCE):** brinda orientaciones sobre la aplicación de nuevas tecnologías en el trabajo del auditor para mejorar la obtención de evidencia y la eficiencia del proceso.
+
+    **Objetivo:**
+    - Incorporar herramientas digitales en auditoría.
+    - Optimizar recursos y aumentar la calidad del trabajo.
+    - Automatizar procedimientos y ampliar el alcance de pruebas.
+
+    **Tecnologías principales:**
+
+    - **RPA (Automatización robótica):**
+    Automatiza tareas repetitivas como conciliaciones, control de saldos y cruces de datos.
+
+    - **Big Data y Data Analytics:**
+    Permite analizar grandes volúmenes de datos para detectar errores, fraudes o patrones inusuales.
+
+    - **Computación en la nube:**
+    Facilita el acceso y almacenamiento de información, aunque requiere controles de seguridad.
+
+    - **Herramientas colaborativas:**
+    Permiten trabajo en equipo, control de versiones y documentación digital de auditoría.
+
+    - **Internet de las cosas (IoT):**
+    Uso de sensores y dispositivos para obtener evidencia (ej: inventarios con drones).
+
+    - **Ciberseguridad:**
+    Protege la información y es clave para evaluar riesgos en auditoría.
+
+    **Ideas clave:**
+    - Las tecnologías mejoran la eficiencia y alcance de la auditoría.
+    - No reemplazan el juicio profesional del auditor.
+    - Implican nuevos riesgos que deben ser evaluados.
+    - Son aplicables incluso en pequeñas y medianas empresas.
+
+            """
+        )
+
 
 # ─── Other pages live in pages/ and are imported here ─────────────────────────
 elif page == "Plan de Cuentas":
