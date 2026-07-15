@@ -149,7 +149,7 @@ Condiciones para "ser un activo":
 - Debe poder convertirse en efectivo o equivalentes de efectivo, o bien, consumirse en el proceso productivo.
 - Tiene que poder distribuirse entre los propietarios.
 
-ACTIVO = PASIVO: Fuente de terceros (patrimonio de terceros) + PATRIMONIO NETO: Fuente de propietarios (patrimonio de los propietarios)
+ACTIVO = Fuente de terceros (patrimonio de terceros) + Fuente de propietarios (patrimonio de los propietarios)
 
 **Pasivo:** obligaciones de la entidad para entregar activos o prestar servicios a terceros surgidas a raíz de eventos pasados, cuyo cumplimiento se espera que resulte en una salida de recursos.
 
@@ -263,13 +263,11 @@ Ejemplo: Caja, Bancos, Mercaderías, Proveedores, Capital Social.
         with st.expander("Estados financieros básicos"):
             st.markdown(
                 """
-**Balance General (ESP):** fotografía del patrimonio en un momento dado.
-Activo = Pasivo + Patrimonio Neto.
+**Estado de Situación Patrimonial:** fotografía del patrimonio en un momento dado.
 
-**Estado de Resultados (PyG):** muestra si la empresa ganó o perdió en el período.
-Resultado = PN inicial - PN final - Aportes + Retiros.
+**Estado de Resultados (PyG):** muestra la rentabilidad de la entidad durante un período determinado.
 
-**Estado de Evolución del PN:** explica los cambios en el patrimonio entre dos períodos.
+**Estado de Evolución del PN:** muestra los cambios en el patrimonio neto durante un período determinado, incluyendo aportes, retiros y resultados.
 
 **Estado de Flujo de Efectivo:** muestra entradas y salidas de dinero por actividades
 operativas, de inversión y de financiación.
@@ -279,12 +277,11 @@ operativas, de inversión y de financiación.
         with st.expander("Indicadores financieros clave"):
             st.markdown(
                 """
-- **Liquidez corriente** = Activo Corriente / Pasivo Corriente (óptimo > 1)
-- **Liquidez ácida** = (Activo Corriente − Inventarios) / Pasivo Corriente (óptimo > 0.8)
+- **Liquidez** = Activo Corriente / Pasivo Corriente (óptimo > 1)
+- **Liquidez ácida** = (Activo Corriente − Bienes de cambio) / Pasivo Corriente (óptimo > 0.8)
 - **Solvencia total** = Activo Total / Pasivo Total (óptimo > 1)
 - **Endeudamiento** = Pasivo Total / Patrimonio Neto (menor es mejor)
-- **Rentabilidad sobre activos (ROA)** = Resultado Neto / Activo Total × 100
-- **Margen neto** = Resultado Neto / Ingresos × 100
+- **Rentabilidad sobre activos (ROA)** = Resultado Neto / Patrimonio Neto "promedio"
                 """
             )
 
