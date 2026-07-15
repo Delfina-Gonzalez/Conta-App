@@ -830,8 +830,7 @@ def get_indicadores() -> dict:
         "liquidez_acida": (activo_c - inventario) / pasivo_c if pasivo_c else None,
         "solvencia": activo_total / pasivo_total if pasivo_total else None,
         "endeudamiento": pasivo_total / patrimonio if patrimonio else None,
-        "rentabilidad": resultado / activo_total * 100 if activo_total else None,
-        "margen_neto": resultado / ingresos * 100 if ingresos else None,
+        "rentabilidad": resultado / patrimonio if patrimonio else None,
     }
 
 

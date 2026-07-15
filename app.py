@@ -105,20 +105,11 @@ if page == "Inicio":
         with st.expander("Recurso económico"):
             st.markdown(
                 """
-**Recurso económico:** elementos cuantificables, libres de utilización, que permiten cumplir con metas (objetivos propuestos según la actividad del ente).
-
-Generan beneficios económicos futuros y pueden ser propiedad de la entidad o estar bajo su control, aunque no sean de su propiedad.
+**Recurso económico:** bien o derecho controlado por el ente, del cual se espera obtener beneficios económicos futuros.
 
 - Propios: son los activos que pertenecen a la entidad y están bajo su control.
-- De terceros: El ente los utiliza libremente, pero no puede disponer de ellos. La cuantificación se hará según el valor del servicio que le prestan.
+- De terceros: El ente los utiliza según las condiciones pactadas, sin tener derecho de propiedad. La cuantificación se hará según el valor del servicio que le prestan.
 
-                """
-            )
-
-        with st.expander("Beneficio económico"):
-            st.markdown(
-                """
-**Beneficio económico:** cuando un recurso tiene valor de uso o de cambio para el ente.
                 """
             )
 
@@ -134,22 +125,16 @@ Generan beneficios económicos futuros y pueden ser propiedad de la entidad o es
         with st.expander("Activo, Pasivo y Patrimonio Neto"):
             st.markdown(
                 """
-**Activo:** recursos económicos (bienes y derechos) transferidos al ente en propiedad por sus propietarios o terceros. 
-
-Son controlados por la entidad, y de los cuales se espera obtener beneficios económicos futuros.
+**Activo:** recurso económico controlado por el ente como resultado de hechos pasados, del cual se espera obtener beneficios económicos futuros.
 
 
 Condiciones para "ser un activo":
-- Debe tener utilidad para en ente.
+- Debe tener utilidad para el ente.
 - Tiene la capacidad de generar beneficios económicos futuros.
 - Tiene que tener derecho sobre el bien y ser controlado por la entidad.
 - Debe haber surgido a raíz de un hecho económico pasado.
 - Debe poder medirse en términos monetarios: un importe sobre bases objetivas y verificables.
-- Debe poder transferirse a terceros, ya sea en propiedad o en usufructo.
 - Debe poder convertirse en efectivo o equivalentes de efectivo, o bien, consumirse en el proceso productivo.
-- Tiene que poder distribuirse entre los propietarios.
-
-ACTIVO = Fuente de terceros (patrimonio de terceros) + Fuente de propietarios (patrimonio de los propietarios)
 
 **Pasivo:** obligaciones de la entidad para entregar activos o prestar servicios a terceros surgidas a raíz de eventos pasados, cuyo cumplimiento se espera que resulte en una salida de recursos.
 
@@ -168,11 +153,10 @@ Condiciones para "ser un pasivo":
 PN = Activo − Pasivo
 
 Variaciones del Patrimonio Neto:
-- CuanTitativas (modificativos): hay un cambio en el valor del patrimonio, ya sea positivo (ganancia) o negativo (pérdida). Ejemplo:
-Se vende mercadería por $1000, que costó $600. El patrimonio aumenta en $400 (ganancia).
+- CuanTitativas (modificativos): cambian el valor del patrimonio → generan resultados (ganancia/pérdida). 
 Las variaciones cuantitativas se producen por los propietarios (retiros, aportes) o por terceros (resultados).
 
-- CuaLitativas (permutativos): hay un cambio en la composición del patrimonio. Ejemplo:
+- CuaLitativas (permutativos): cambian la composición → NO generan resultado. Ejemplo:
 Se paga a un proveedor con dinero de la caja (disminuye el activo caja y disminuye el pasivo proveedores, pero no cambia el patrimonio neto).
 Las variaciones cualitativas se dan por cambios de activos x activos, pasivos x pasivos y aumentos/disminuciones de activos con un equivalente en otro pasivo.
 No generan resultados, ya sea que son producto de los propietarios o de terceros.
@@ -188,8 +172,8 @@ Elementos del Patrimonio Neto:
         with st.expander("Resultado del ejercicio"):
             st.markdown(
                 """
-**Resultado del ejercicio:** es la variación cuantitativa del patrimonio durante un período (que no represente aportes o retiros de los propietarios). Representa la ganancia o pérdida acumulada durante ese período.
-  
+**Resultado del ejercicio:** variación del patrimonio neto en un período, excluyendo aportes y retiros de los propietarios.
+
     RESULTADO = PATRIMONIO FINAL − PATRIMONIO INICIAL − APORTES + Retiros
 
 Fuentes de varación de resultados:
@@ -205,7 +189,7 @@ Fuentes de varación de resultados:
                 """
 **Unidad de medida:** la moneda es la unidad de medida utilizada para expresar los valores en los estados financieros. Es la base para la medición y presentación de la información contable.
 - Moneda Nominal: no considera la inflación, se expresa en términos de la moneda corriente.
-- Moneda Homogénea: considera la inflación, se expresa por ajuste de poder adquisitivo, para reflejar el valor real de los activos y pasivos.
+- Moneda Homogénea: moneda ajustada por inflación (unidad de poder adquisitivo constante)
              
 Inflación: aumento generalizado y sostenido de los precios de bienes y servicios en un país durante un período de tiempo. La inflación reduce el poder adquisitivo de la moneda, afectando la capacidad de compra de los consumidores y la rentabilidad de las empresas.
     
@@ -222,10 +206,9 @@ Inflación: aumento generalizado y sostenido de los precios de bienes y servicio
 - **Valor corriente:** se mide al valor actualizado por la inflación. Puede ser "de entrada" (costo de reposición o refabricación) o "de salida" (valor de venta menos gastos de venta).
 - **Valor actual:** es el valor hoy de un importe a pagar o a cobrar en el futuro (aplica a créditos y deudas).
 
-Valor límite: el valor de un activo no puede ser mayor que el valor de mercado, ni menor que el valor de reposición. 
-El valor de un pasivo no puede ser mayor que el valor de mercado, ni menor que el valor de liquidación.
+Valor límite: Se aplica el criterio de Valor recuperable, Costo o valor neto realizable (el menor). Depende de la norma contable: RT, IFRS, etc.
 
-Nunca debe registrarse un activo por encima de su valor de mercado, ni un pasivo por debajo de su valor de liquidación.
+o debe registrarse un activo por encima de su valor recuperable, ni un pasivo por debajo de su valor de liquidación.
 
 - En un modelo de "valor de costo histórico", el valor de mercado sería el valor de reposición o refabricación. En caso de bienes de fácil comercialización el mismo será el costo de reposición. En caso de bienes de difícil comercialización, el mismo será el VNR (precio de venta - gastos de venta).
 - En un modelo de "valor corriente", el valor de mercado sería el el mayor valor entre el VNR (precio de venta - gastos de venta) y el VUE (valor de uso del bien, es el valor actual de ingresos generados).  """
@@ -274,7 +257,7 @@ operativas, de inversión y de financiación.
                 """
             )
 
-        with st.expander("Indicadores financieros clave"):
+        with st.expander("Indicadores: análisis de estados contables"):
             st.markdown(
                 """
 - **Liquidez** = Activo Corriente / Pasivo Corriente (óptimo > 1)
