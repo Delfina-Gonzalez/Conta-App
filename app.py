@@ -206,13 +206,13 @@ Inflación: aumento generalizado y sostenido de los precios de bienes y servicio
 - **Valor corriente:** se mide al valor actualizado por la inflación. Puede ser "de entrada" (costo de reposición o refabricación) o "de salida" (valor de venta menos gastos de venta).
 - **Valor actual:** es el valor hoy de un importe a pagar o a cobrar en el futuro (aplica a créditos y deudas).
 
-Valor límite: Se aplica el criterio de Valor recuperable, Costo o valor neto realizable (el menor). Depende de la norma contable: RT, IFRS, etc.
-
-o debe registrarse un activo por encima de su valor recuperable, ni un pasivo por debajo de su valor de liquidación.
+Valor límite: se aplica un criterio de medición, depende de la norma contable: RT, IFRS, etc.
 
 - En un modelo de "valor de costo histórico", el valor de mercado sería el valor de reposición o refabricación. En caso de bienes de fácil comercialización el mismo será el costo de reposición. En caso de bienes de difícil comercialización, el mismo será el VNR (precio de venta - gastos de venta).
-- En un modelo de "valor corriente", el valor de mercado sería el el mayor valor entre el VNR (precio de venta - gastos de venta) y el VUE (valor de uso del bien, es el valor actual de ingresos generados).  """
-            )
+- En un modelo de "valor corriente", el valor de mercado sería el el mayor valor entre el VNR (precio de venta - gastos de venta) y el VUE (valor de uso del bien, es el valor actual de ingresos generados).  
+
+No debe registrarse un activo por encima de su valor recuperable, ni un pasivo por debajo de su valor de liquidación.
+   """         )
 
         with st.expander("Tipos de cuentas"):
             st.markdown(
