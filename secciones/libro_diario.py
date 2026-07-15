@@ -13,12 +13,16 @@ from utils.styles import apply_style, page_header, fmt_money, badge, divider
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
-def _cuenta_options(df: pd.DataFrame) -> dict:
-    """Return {display_label: row_dict}."""
-    return {
-        f"{r['codigo']} — {r['nombre']}": r.to_dict()
-        for _, r in df.iterrows()
-    }
+def _cuenta_lookup(df: pd.DataFrame) -> dict:
+    """Return {cuenta_id: row_dict}, used with format_func for a searchable selectbox."""
+    return {int(r["id"]): r.to_dict() for _, r in df.iterrows()}
+
+
+def _fmt_cuenta(cuenta_id, lookup: dict) -> str:
+    if cuenta_id is None or cuenta_id not in lookup:
+        return ""
+    c = lookup[cuenta_id]
+    return f"{c['codigo']} — {c['nombre']}"
 
 
 def _hint_contrapartida(tipo: str) -> str:
@@ -49,12 +53,24 @@ def render():
         "Registro cronológico de asientos contables. Debe = Haber para cada asiento.",
     )
 
+    # ── Feedback persistente tras guardar/editar/eliminar un asiento ──────────
+    # st.toast() llamado justo antes de st.rerun() puede perderse en el rerun,
+    # así que guardamos el mensaje en session_state y lo mostramos acá arriba,
+    # de forma visible, apenas se recarga la página.
+    if st.session_state.get("asiento_feedback"):
+        kind, msg = st.session_state.pop("asiento_feedback")
+        if kind == "success":
+            st.success(msg)
+        else:
+            st.error(msg)
+
     cuentas_df = get_all_cuentas()
     if cuentas_df.empty:
         st.warning("No hay cuentas disponibles. Cargá el plan de cuentas primero.")
         return
 
-    opts = _cuenta_options(cuentas_df)
+    opts = _cuenta_lookup(cuentas_df)
+    cuenta_ids = sorted(opts.keys(), key=lambda cid: opts[cid]["codigo"])
 
     tabs = st.tabs(["Nuevo asiento", "Asientos registrados"])
 
@@ -103,16 +119,19 @@ def render():
         for i, linea in enumerate(lineas):
             c1, c2, c3, c4, c5 = st.columns([3, 1.5, 1.5, 2, 0.5])
             with c1:
-                sel = st.selectbox(
+                sel_id = st.selectbox(
                     f"cuenta_{i}",
-                    ["— Seleccionar —"] + list(opts.keys()),
+                    cuenta_ids,
+                    index=None,
+                    format_func=lambda cid: _fmt_cuenta(cid, opts),
+                    placeholder="Escribí código o nombre para buscar...",
                     key=f"sel_c_{i}",
                     label_visibility="collapsed",
                 )
-                if sel != "— Seleccionar —":
-                    linea["cuenta"] = opts[sel]
+                if sel_id is not None:
+                    linea["cuenta"] = opts[sel_id]
                     if hint_tipo is None:
-                        hint_tipo = opts[sel]["tipo"]
+                        hint_tipo = opts[sel_id]["tipo"]
                 else:
                     linea["cuenta"] = None
             with c2:
@@ -200,9 +219,9 @@ def render():
                     else:
                         ok, msg, _ = save_asiento(str(fecha), descripcion, lineas_data)
                         if ok:
-                            # ── CAMBIO AQUÍ: Notificación flotante persistente al rerun ──
-                            st.toast(f"✅ {msg if msg else '¡Asiento cargado con éxito!'}", icon="📝")
-                            
+                            st.session_state.asiento_feedback = (
+                                "success", msg or "¡Asiento cargado con éxito!"
+                            )
                             st.session_state.lineas_nuevo = [
                                 {"cuenta": None, "debe": 0.0, "haber": 0.0, "descripcion": ""},
                                 {"cuenta": None, "debe": 0.0, "haber": 0.0, "descripcion": ""},
@@ -267,21 +286,16 @@ def render():
                     for j, el in enumerate(edit_lineas):
                         ec1, ec2, ec3, ec4, ec5 = st.columns([3, 1.5, 1.5, 2, 0.5])
                         with ec1:
-                            default_key = (
-                                f"{el['codigo']} — {el['nombre']}"
-                                if el.get("codigo") else "— Seleccionar —"
-                            )
-                            all_opts = ["— Seleccionar —"] + list(opts.keys())
-                            try:
-                                didx = all_opts.index(default_key)
-                            except ValueError:
-                                didx = 0
+                            cur_id = el["cuenta"]["id"] if el.get("cuenta") else None
                             sel2 = st.selectbox(
-                                f"ec_{j}", all_opts, index=didx,
+                                f"ec_{j}", cuenta_ids,
+                                index=cuenta_ids.index(cur_id) if cur_id in opts else None,
+                                format_func=lambda cid: _fmt_cuenta(cid, opts),
+                                placeholder="Escribí código o nombre para buscar...",
                                 key=f"esel_{asiento['id']}_{j}",
                                 label_visibility="collapsed",
                             )
-                            el["cuenta"] = opts[sel2] if sel2 != "— Seleccionar —" else None
+                            el["cuenta"] = opts[sel2] if sel2 is not None else None
                         with ec2:
                             el["debe"] = st.number_input(
                                 f"ed_{j}", min_value=0.0, step=100.0,
@@ -327,7 +341,7 @@ def render():
                             ]
                             ok, msg = update_asiento(asiento["id"], str(edit_fecha), edit_desc, ld)
                             if ok:
-                                st.success(msg)
+                                st.session_state.asiento_feedback = ("success", msg)
                                 st.session_state.editing_id = None
                                 st.rerun()
                             else:
@@ -404,7 +418,7 @@ def render():
                         if st.button("Eliminar asiento", key=f"del_{asiento['id']}"):
                             ok, msg = delete_asiento(asiento["id"])
                             if ok:
-                                st.success(msg)
+                                st.session_state.asiento_feedback = ("success", msg)
                                 st.rerun()
                             else:
                                 st.error(msg)
