@@ -84,14 +84,14 @@ def render():
     divider()
 
     tabs = st.tabs([
-        "Balance General",
+        "Estado de Situación Patrimonial",
         "Estado de Resultados",
-        "Evolución Patrimonial",
+        "Estado de Evolución del Patrimonio",
         "Flujo de Efectivo",
     ])
 
     # ══════════════════════════════════════════════════════════════════════════
-    # TAB 1 — BALANCE GENERAL
+    # TAB 1 — ESTADO DE SITUACIÓN PATRIMONIAL
     # ══════════════════════════════════════════════════════════════════════════
     with tabs[0]:
         st.markdown("## Estado de Situación Patrimonial")
